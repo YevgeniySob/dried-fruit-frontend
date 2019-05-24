@@ -1,15 +1,22 @@
+#root {
+  height: 100%;
+}
+
+.comp-container {
+  height: 100%;
+}
+
 #chroom-panel {
-    min-height: 500px;
+    height: 100%;
     background-color: #bad3fc;
 }
 
 #msg-panel {
-    min-height: 500px;
+    height: 100%;
     background-color: #efd9f9;
 }
 
 #users-panel {
-    min-height: 500px;
+    min-height: 100%;
     background-color: #bee2c1;
 }
-
