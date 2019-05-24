@@ -1,0 +1,15 @@
+#chroom-panel {
+    min-height: 500px;
+    background-color: #bad3fc;
+}
+
+#msg-panel {
+    min-height: 500px;
+    background-color: #efd9f9;
+}
+
+#users-panel {
+    min-height: 500px;
+    background-color: #bee2c1;
+}
+
