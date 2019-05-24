@@ -13,7 +13,10 @@ function App() {
         <div className="three wide column" id="chroom-panel">
         1</div>
         <div className="ten wide column" id="msg-panel">
-        2</div>
+
+
+
+        </div>
         <div className="three wide column" id="users-panel">
         3</div>
       </div>
