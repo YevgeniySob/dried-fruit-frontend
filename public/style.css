@@ -2,11 +2,16 @@
   height: 100%;
 }
 
-
+.form-container {
+  padding-top: 50px;
+}
 
 .comp-container {
   height: 100%;
+}
 
+.navigation {
+  border-bottom: 1px solid #d4d4d5;
 }
 
 #chroom-panel {
