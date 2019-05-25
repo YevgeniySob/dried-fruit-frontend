@@ -2,8 +2,11 @@
   height: 100%;
 }
 
+
+
 .comp-container {
   height: 100%;
+
 }
 
 #chroom-panel {
@@ -14,9 +17,19 @@
 #msg-panel {
     height: 100%;
     background-color: #efd9f9;
+    max-height: 600px;
+    overflow: scroll;
+}
+
+#message-list {
+
 }
 
 #users-panel {
     min-height: 100%;
     background-color: #bee2c1;
 }
+
+/*input {*/
+/*   width: 80%;*/
+/*}*/

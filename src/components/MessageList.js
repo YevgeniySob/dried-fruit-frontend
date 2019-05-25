@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
+import Message from './Message'
+import { Comment } from 'semantic-ui-react'
 
-const MessageList = () => {
+export default class MessageList extends Component {
 
-  return (
-    <div>MessageList</div>
-  )
+	renderMes = () => {
+		return this.props.messages.map( message => {
+			return <Message key={message.id} message={message}/>
+		})
+	};
+
+  render() {
+    return (
+      <div className={'message-list'}>
+        <Comment.Group>
+        { this.renderMes() }
+        </Comment.Group>
+      </div>
+    );
+  }
 }
-
-export default MessageList;
