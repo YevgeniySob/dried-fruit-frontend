@@ -1,18 +1,31 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link}             from 'react-router-dom';
+import LoginContainer     from '../auth/LoginContainer'
+
 class Navbar extends Component {
 
-  render() {
-    return (
-      <div className="ui internally celled grid navigation">
-        <div className="row">
-          <div className="two wide column">Dried Fruit</div>
-          <div className="two wide column"><Link to="/">Home</Link></div>
-          <div className="two wide column"><Link to="/login">Login</Link></div>
-        </div>
-      </div>
-    )
-  }
+	state = {
+		signup: false
+	};
+
+	render() {
+		console.log("Navbar currentUser: ", this.props.currentUser)
+		return (
+			<div className="ui top fixed borderless inverted fluid menu">
+				<div className="ui container">
+					<a className="header item">Project Name</a>
+					<div className="right menu">
+						<div className="item">
+							<form className="ui form">
+								<LoginContainer handleLogInSubmission={this.props.handleLogInSubmission} currentUser={this.props.currentUser} logOut={this.props.logOut}/>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
 
 export default Navbar;
+

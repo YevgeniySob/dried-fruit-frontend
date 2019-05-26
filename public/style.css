@@ -35,6 +35,10 @@
     background-color: #bee2c1;
 }
 
-/*input {*/
-/*   width: 80%;*/
-/*}*/
+.ui.menu.fixed {
+    position: relative;
+}
+
+.ui.fixed.menu+.ui.grid {
+    padding-top: 0;
+}

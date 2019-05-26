@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter} from 'react-router-dom'
+import React, { Component, Fragment } from 'react';
+import { Link }             from 'react-router-dom';
+import { withRouter}        from 'react-router-dom'
 
 const initialState = {
   error: null,
@@ -33,7 +33,7 @@ class LoginContainer extends Component {
           })
         } else {
           this.props.handleLogInSubmission(userData);
-          this.setState({ currentUser: userData })
+          this.props.history.push("/chatrooms")
         }
       })
   };
@@ -47,31 +47,62 @@ class LoginContainer extends Component {
     })
   };
 
+  handleLogOut = () => {
+    this.props.history.push("/");
+    this.props.logOut();
+  }
+
   render() {
+
     return (
-      <div className="ui container form-container">
-        <div className="ui internally celled grid">
-          <div className="row">
-            <div className="eight wide column">
-              <h1 class="ui header">Login</h1>
-              <form className="ui form" onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label>Username</label>
-                  <input onChange={this.handleChange} value={this.state.fields.username} type="text" name="username" placeholder="User Name" />
-                </div>
-                <div className="field">
-                  <label>Password</label>
-                  <input onChange={this.handleChange} value={this.state.fields.password} type="password" name="password" placeholder="Password"/>
-                </div>
-                <button className="ui button" type="submit">Submit</button>
-                <Link to="signup"><button className="ui button">Sign Up</button></Link>
-              </form>
+      <div className="inline fields">
+        { !this.props.currentUser ?
+          (
+            <Fragment>
+            <div className="field">
+
+              <input
+                onChange={this.handleChange}
+                value={this.state.fields.username}
+                type="text"
+                name="username"
+                placeholder="User Name"
+              />
             </div>
-          </div>
-        </div>
+            <div className="field">
+              <input
+                onChange={this.handleChange}
+                value={this.state.fields.password}
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <div className="field">
+              <button className="ui green button" onClick={this.handleSubmit}>Log in</button>
+            </div>
+            <div className="field">
+              <button className="ui green button">Sign up</button>
+            </div>
+          </Fragment>
+          )
+          :
+          (
+            <div className="field">
+              <button className="ui green button" onClick={this.handleLogOut}>Logout</button>
+            </div>
+          )
+
+
+
+        }
+
+
       </div>
+
     )
   }
 }
 
 export default withRouter(LoginContainer);
+// export default LoginContainer;

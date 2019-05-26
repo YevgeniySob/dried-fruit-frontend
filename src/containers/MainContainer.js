@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ChatroomsContainer from './ChatroomsContainer';
-import MessagesContainer from './MessagesContainer';
-import UsersContainer from './UsersContainer';
+import ChatroomsContainer   from './ChatroomsContainer';
+import MessagesContainer    from './MessagesContainer';
+import UsersContainer       from '../auth/UsersContainer';
 
 class MainContainer extends Component {
 
@@ -31,10 +31,9 @@ class MainContainer extends Component {
 	};
 
   addNewMessage = (newMessage) => {
-  	// debugger
   	let formData = {
   		content: newMessage,
-		  user_id: 1,
+		  user_id: this.props.currentUser.id,
 		  chatroom_id: 1
 	  };
 
@@ -48,12 +47,6 @@ class MainContainer extends Component {
 	  };
 
 	  fetch("http://localhost:3000/messages", configObj)
-		  // .then(r => r.json())
-		  // .then(msg => {
-			//   this.setState(prevState => ({
-			// 	  messages: [...prevState.messages, msg ]
-			//   }))
-		  // })
 		  .catch(error => {
 		  	alert(error.message);
 		  	console.log(error.message)
@@ -61,7 +54,7 @@ class MainContainer extends Component {
   };
 
   render() {
-  	console.log('rendering', this.state.messages)
+  	// console.log('rendering', this.state.messages)
     return (
       <div className="ui internally celled grid comp-container">
         <div className="row">
