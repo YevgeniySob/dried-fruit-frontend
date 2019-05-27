@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChatroomsContainer   from './ChatroomsContainer';
 import MessagesContainer    from './MessagesContainer';
 import UsersContainer       from '../auth/UsersContainer';
+import { withRouter}        from 'react-router-dom'
 
 class MainContainer extends Component {
 
@@ -12,17 +13,29 @@ class MainContainer extends Component {
   };
 
   componentDidMount() {
-  	fetch('http://localhost:3000/chatrooms')
-		  .then(r => r.json())
-		  .then(data => this.setState({
+    // const token = localStorage.getItem("token");
+    if (!this.props.currentUser) {
+      // this check is insufficient
+      // we also need to see if the user with that token exists
 
-			  chatrooms: data,
-			  messages: data[0].messages,
-			  users: data[0].usersInChat
-		  }, () => console.log('state', this.state)))
+      // Checking for token could be abstracted out into seperate funciton if it
+      // winds up being repeated in a lot of places
+      this.props.history.push("/")
+    } else {
+      fetch('http://localhost:3000/chatrooms')
+      .then(r => r.json())
+      .then(data => this.setState({
+
+        chatrooms: data,
+        messages: data[0].messages,
+        users: data[0].usersInChat
+      }, () => console.log('state', this.state)))
+    }
+
   }
 
 	renderMessage = message => {
+    console.log("render message is running");
 		this.setState(prevState => {
 			return {
 				messages: [...prevState.messages, message]
@@ -67,4 +80,4 @@ class MainContainer extends Component {
   }
 }
 
-export default MainContainer;
+export default withRouter(MainContainer);

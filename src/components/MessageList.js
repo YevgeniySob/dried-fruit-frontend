@@ -5,8 +5,8 @@ import { Comment } from 'semantic-ui-react'
 export default class MessageList extends Component {
 
 	renderMes = () => {
-		return this.props.messages.map( message => {
-			return <Message key={message.id} message={message}/>
+		return this.props.messages.map( (message, idx) => {
+			return <Message key={idx} message={message}/>
 		})
 	};
 

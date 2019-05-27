@@ -8,7 +8,7 @@ class SignupContainer extends Component {
         <div className="ui internally celled grid">
           <div className="row">
             <div className="eight wide column">
-              <h1 class="ui header">Sign Up</h1>
+              <h1 className="ui header">Sign Up</h1>
               <form className="ui form">
                 <div className="field">
                   <label>First Name</label>

@@ -27,8 +27,7 @@ class App extends Component {
           if (!user.error) {
             this.setState({currentUser: user});
           }
-          // need to finish with the case that the user
-          // DOES exist
+          // need to finish
         })
     }
   }
@@ -45,8 +44,14 @@ class App extends Component {
   }
 
   handleLogInSubmission = user  => {
+<<<<<<< HEAD
     localStorage.setItem("token", user.jwt);
     this.setState({currentUser: user.user})
+=======
+    console.log('USER response', user);
+    localStorage.setItem("token", user.token);
+    this.setState({currentUser: user})
+>>>>>>> master
   };
 
   render() {
@@ -65,6 +70,7 @@ class App extends Component {
           <Route path="/signup" component={SignupContainer}/>
           <Route path="/" component={null} />
         </Switch>
+        <footer style={{height: "100px", backgroundColor: "black"}}></footer>
       </React.Fragment>
     )
   }
