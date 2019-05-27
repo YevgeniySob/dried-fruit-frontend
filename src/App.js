@@ -45,8 +45,8 @@ class App extends Component {
   }
 
   handleLogInSubmission = user  => {
-    localStorage.setItem("token", user.token);
-    this.setState({currentUser: user})
+    localStorage.setItem("token", user.jwt);
+    this.setState({currentUser: user.user})
   };
 
   render() {
