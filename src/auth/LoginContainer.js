@@ -27,7 +27,7 @@ class LoginContainer extends Component {
     })
       .then(r => r.json())
       .then(userData => {
-        if (userData.error) {
+        if (userData.message) {
           this.setState({
             error: true
           })

@@ -12,7 +12,28 @@ class MainContainer extends Component {
 	  users: []
   };
 
+  componentWillMount() {
+    const token = localStorage.getItem("token");
+    if(token) {
+      fetch("http://localhost:3000/profile", {
+        headers: {
+          Authenticate: token
+        }
+      })
+        .then(res => res.json())
+        // .then('profile access',console.log)
+        .then(user => {
+          if (!user) {
+            // debugger
+            this.setState({this.props.currentUser: user});
+          }
+          // need to finish
+        })
+    }
+  }
+
   componentDidMount() {
+    console.log('breaking here'. this.props.currentUser);
     const token = localStorage.getItem("token");
     if (!token) {
       // this check is insufficient

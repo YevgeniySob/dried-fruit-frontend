@@ -12,24 +12,6 @@ class App extends Component {
     currentUser: null,
     login: true,
     error: false
-  };
-
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    if(token) {
-      fetch("http://localhost:3000/current_user", {
-        headers: {
-          Authenticate: token
-        }
-      })
-        .then(res => res.json())
-        .then(user => {
-          if (!user.error) {
-            this.setState({currentUser: user});
-          }
-          // need to finish
-        })
-    }
   }
 
   handleSignUp = () => {
@@ -45,8 +27,8 @@ class App extends Component {
 
   handleLogInSubmission = user  => {
     console.log('USER response', user);
-    localStorage.setItem("token", user.token);
-    this.setState({currentUser: user})
+    localStorage.setItem("token", user.jwt);
+    this.setState({currentUser: user.user})
   };
 
   render() {
