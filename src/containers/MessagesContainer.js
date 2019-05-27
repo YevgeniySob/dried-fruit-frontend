@@ -50,7 +50,7 @@ class MessagesContainer extends Component {
 		      <div className="row">
 			      <div className="sixteen wide column" id="msg-panel">
 	            {/*<div className="ui input"><input type="text" placeholder="Search..."/></div>*/}
-				      <Input onChange={this.handleChange} value={this.state.content} fluid={true} placeholder='Search...' />
+				      <Input onChange={this.handleChange} value={this.state.content} fluid={true} placeholder='Write your message...' />
 				      <button className="ui basic blue button" onClick={this.handleClick}>Send</button>
 	          </div>
           </div>
