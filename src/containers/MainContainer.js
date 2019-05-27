@@ -13,8 +13,8 @@ class MainContainer extends Component {
   };
 
   componentDidMount() {
-    const token = localStorage.getItem("token");
-    if (!token) {
+    // const token = localStorage.getItem("token");
+    if (!this.props.currentUser) {
       // this check is insufficient
       // we also need to see if the user with that token exists
 
