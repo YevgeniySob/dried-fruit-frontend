@@ -3,11 +3,13 @@ import UserList             from '../components/UserList';
 
 class UsersContainer extends Component {
 
+
+
   render() {
     return (
       <div className="three wide column" id="users-panel">
         <p>UsersContainer</p>
-        <UserList />
+        <UserList users={this.props.users}/>
       </div>
     )
   }

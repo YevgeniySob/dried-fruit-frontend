@@ -9,7 +9,8 @@ class MainContainer extends Component {
   state = {
     chatrooms: [],
 	  messages: [],
-	  users: []
+	  users: [],
+	  currentChatRoom: null
   };
 
   componentDidMount() {
@@ -73,7 +74,7 @@ class MainContainer extends Component {
         <div className="row">
           <ChatroomsContainer />
           <MessagesContainer messages={this.state.messages} addNewMessage={this.addNewMessage} renderMessage={this.renderMessage}/>
-          <UsersContainer />
+          <UsersContainer users={this.state.users}/>
         </div>
       </div>
     )
