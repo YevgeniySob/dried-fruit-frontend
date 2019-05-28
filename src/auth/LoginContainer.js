@@ -50,7 +50,7 @@ class LoginContainer extends Component {
   handleLogOut = () => {
     this.props.history.push("/");
     this.props.logOut();
-  }
+  };
 
   render() {
 
@@ -82,7 +82,7 @@ class LoginContainer extends Component {
               <button className="ui green button" onClick={this.handleSubmit}>Log in</button>
             </div>
             <div className="field">
-              <button className="ui green button">Sign up</button>
+              <Link to={'/signup'}><button className="ui green button" >Sign up</button></Link>
             </div>
           </Fragment>
           )

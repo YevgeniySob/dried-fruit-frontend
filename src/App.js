@@ -32,26 +32,16 @@ class App extends Component {
     }
   }
 
-  handleSignUp = () => {
-    this.setState({
-      login: false
-    })
-  };
-
   logOut = () => {
     localStorage.removeItem("token");
     this.setState({currentUser: null});
-  }
+  };
 
   handleLogInSubmission = user  => {
-<<<<<<< HEAD
-    localStorage.setItem("token", user.jwt);
-    this.setState({currentUser: user.user})
-=======
+
     console.log('USER response', user);
     localStorage.setItem("token", user.token);
     this.setState({currentUser: user})
->>>>>>> master
   };
 
   render() {
@@ -70,7 +60,7 @@ class App extends Component {
           <Route path="/signup" component={SignupContainer}/>
           <Route path="/" component={null} />
         </Switch>
-        <footer style={{height: "100px", backgroundColor: "black"}}></footer>
+        <footer style={{height: "100px", backgroundColor: "black"}}/>
       </React.Fragment>
     )
   }
