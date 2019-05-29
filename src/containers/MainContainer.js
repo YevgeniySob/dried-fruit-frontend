@@ -14,13 +14,7 @@ class MainContainer extends Component {
   };
 
   componentDidMount() {
-    // const token = localStorage.getItem("token");
-    if (!this.props.currentUser) {
-      // this check is insufficient
-      // we also need to see if the user with that token exists
-
-      // Checking for token could be abstracted out into seperate funciton if it
-      // winds up being repeated in a lot of places
+    if (!this.props.currentUser && !this.props.fetching) {
       this.props.history.push("/")
     } else {
       fetch('http://localhost:3000/chatrooms')
@@ -30,9 +24,8 @@ class MainContainer extends Component {
         chatrooms: data,
         messages: data[0].messages,
         users: data[0].usersInChat
-      }, () => console.log('state', this.state)))
+      }))
     }
-
   }
 
 	renderMessage = message => {
@@ -63,12 +56,11 @@ class MainContainer extends Component {
 	  fetch("http://localhost:3000/messages", configObj)
 		  .catch(error => {
 		  	alert(error.message);
-		  	console.log(error.message)
+		  	console.log('ERROR', error.message)
 		  })
   };
 
   render() {
-  	console.log('rendering', this.state.chatrooms[0])
     return (
       <div id={'main-container'} className="ui internally celled grid comp-container">
         <div className="row">

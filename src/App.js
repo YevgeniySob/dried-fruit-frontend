@@ -10,7 +10,7 @@ class App extends Component {
 
   state = {
     currentUser: null,
-    login: true,
+    fetching: true,
     error: false
   };
 
@@ -25,7 +25,10 @@ class App extends Component {
         .then(res => res.json())
         .then(user => {
           if (!user.error) {
-            this.setState({currentUser: user});
+            this.setState({
+              currentUser: user,
+              fetching: false
+            });
           }
           // need to finish
         })
@@ -56,7 +59,7 @@ class App extends Component {
         />
         {/*<MainContainer />*/}
         <Switch>
-          <Route path="/chatrooms" render={() => <MainContainer currentUser={this.state.currentUser}/>} />
+          <Route path="/chatrooms" render={() => <MainContainer currentUser={this.state.currentUser} fetching={this.state.fetching}/>} />
           <Route path="/signup" component={SignupContainer}/>
           <Route path="/" component={null} />
         </Switch>
