@@ -9,9 +9,10 @@ html, body {
   height: 100vh;
 }
 
-/*.form-container {*/
-/*  padding-top: 50px;*/
-/*}*/
+.form-container {
+  height: 100%;
+  padding-top: 100px;
+}
 
 .comp-container {
   height: 100%;
