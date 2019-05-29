@@ -60,7 +60,7 @@ class App extends Component {
           <Route path="/signup" component={SignupContainer}/>
           <Route path="/" component={null} />
         </Switch>
-        <footer style={{height: "100px", backgroundColor: "black"}}/>
+        <footer style={{height: "75px", backgroundColor: "black"}}/>
       </React.Fragment>
     )
   }

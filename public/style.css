@@ -1,3 +1,10 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 #root {
   height: 100vh;
 }
@@ -13,31 +20,71 @@
 
 #chroom-panel {
     height: 100%;
-    background-color: #bad3fc;
+    background-color: #94C5CC
 }
 
 #msg-panel {
     height: 100%;
-    background-color: #efd9f9;
+    background-color: #F8F8F8;
     max-height: 100vh;
     overflow: auto;
 }
 
-#message-list {
-
+.message-list {
+  padding-left: 5%;
 }
 
 #users-panel {
     min-height: 100%;
-    background-color: #bee2c1;
+    background-color: #94C5CC;
 }
 
 .ui.menu.fixed {
      /*position: relative;*/
+     background-color: #000100
 }
 
-.ui.fixed.menu+.ui.grid {
-    /* padding-top: 0; */
+.ui.comments .comment .author {
+    font-size: 1.5em;
+}
+.ui.comments .comment .text {
+    margin: .25em 0 .5em;
+    font-size: 1.25em;
+    line-height: 1.3;
+}
+.ui.basic.label {
+    background-color: #F8F8F8;
+    border: none;
+}
+
+.ui.button {
+  background-color: #F8F8F8;
+}
+
+.ui.button:hover {
+  background-color: #F8F8F8;
+}
+
+.heart-icon {
+  color: #B4D2E7;
+}
+
+.ui.input>input {
+  width: 65%;
+  margin-left: 1%;
+  margin-top: 5px;
+}
+
+#send-btn {
+  width: 10%;
+  margin: .258571429em .25em 0 .25em;
+  padding: .78571429em 1.5em .78571429em 1.5em;
+  color: #000100 !important;
+  border: 1px solid #000100;
+}
+
+footer {
+  background-color: #000100
 }
 
 #main-container {
@@ -49,12 +96,7 @@
     /*padding: 0;*/
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
+
 
 .ui.avatar.image {
     margin-top: 10px;

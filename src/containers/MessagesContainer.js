@@ -44,14 +44,15 @@ class MessagesContainer extends Component {
 	      />
         <div className="ten wide column" id="msg-panel">
 		      <div className="row" >
-	          <p>MessagesContainer</p>
 	          <MessageList messages={this.props.messages}/>
 	        </div>
 		      <div className="row">
 			      <div className="sixteen wide column" id="msg-panel">
 	            {/*<div className="ui input"><input type="text" placeholder="Search..."/></div>*/}
-				      <Input onChange={this.handleChange} value={this.state.content} fluid={true} placeholder='Write your message...' />
-				      <button className="ui basic blue button" onClick={this.handleClick}>Send</button>
+							<div className="ui fluid input">
+					      <input type="text" onChange={this.handleChange} value={this.state.content} fluid={true} placeholder='Write your message...' />
+					      <button id="send-btn" className="ui basic button" onClick={this.handleClick}>Send</button>
+							</div>
 	          </div>
           </div>
 					<div style={{ float:"left", clear: "both" }}
