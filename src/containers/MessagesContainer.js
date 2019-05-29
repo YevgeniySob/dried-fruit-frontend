@@ -23,7 +23,8 @@ class MessagesContainer extends Component {
 	  this.scrollToBottom();
 	}
 
-	handleClick = () => {
+	handleClick = (e) => {
+		e.preventDefault()
 		this.props.addNewMessage(this.state.content);
 		this.setState(defaultState)
 	};
@@ -48,11 +49,10 @@ class MessagesContainer extends Component {
 	        </div>
 		      <div className="row">
 			      <div className="sixteen wide column" id="msg-panel">
-	            {/*<div className="ui input"><input type="text" placeholder="Search..."/></div>*/}
-							<div className="ui fluid input">
+							<form className="ui fluid input"onSubmit={this.handleClick}>
 					      <input type="text" onChange={this.handleChange} value={this.state.content} fluid={true} placeholder='Write your message...' />
-					      <button id="send-btn" className="ui basic button" onClick={this.handleClick}>Send</button>
-							</div>
+					      <button type="submit" id="send-btn" className="ui basic button">Send</button>
+							</form>
 	          </div>
           </div>
 					<div style={{ float:"left", clear: "both" }}

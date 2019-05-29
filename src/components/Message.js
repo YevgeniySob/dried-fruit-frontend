@@ -38,7 +38,7 @@ class Message extends Component {
 				<Comment.Content>
 					<Comment.Author as='a'>{this.props.message.username}</Comment.Author>
 					<Comment.Metadata>
-						<div>{this.props.message.created_at}</div>
+						<div>{this.props.message.created_at.slice(11,16)}</div>
 					</Comment.Metadata>
 					<Comment.Text>{this.props.message.content}</Comment.Text>
 					{/*<Comment.Actions>*/}
