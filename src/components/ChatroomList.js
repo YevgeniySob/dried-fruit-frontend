@@ -1,9 +1,9 @@
 import React from 'react';
 
-const ChatroomList = () => {
+const ChatroomList = (props) => {
 
   return (
-    <h4>ChatroomList</h4>
+    <div></div>
   )
 
 }

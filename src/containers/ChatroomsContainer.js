@@ -6,7 +6,7 @@ class ChatroomsContainer extends Component {
   render() {
     return (
       <div className="three wide column" id="chroom-panel">
-      <p>ChatroomsContainer</p>
+        <h4>Mod 4</h4>
       <ChatroomList />
       </div>
     )

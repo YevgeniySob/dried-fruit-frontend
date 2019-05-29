@@ -35,6 +35,13 @@ class MessagesContainer extends Component {
   render() {
     return (
       <Fragment>
+	      <ActionCableConsumer
+		      channel={{channel: "ChatroomChannel"}}
+		      onReceived={(message) => {
+			      console.log('message was received', message);
+			      this.props.renderMessage(message)
+		      }}
+	      />
         <div className="ten wide column" id="msg-panel">
 		      <div className="row" >
 	          <p>MessagesContainer</p>

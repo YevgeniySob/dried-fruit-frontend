@@ -68,9 +68,9 @@ class MainContainer extends Component {
   };
 
   render() {
-  	// console.log('rendering', this.state.messages)
+  	console.log('rendering', this.state.chatrooms[0])
     return (
-      <div className="ui internally celled grid comp-container">
+      <div id={'main-container'} className="ui internally celled grid comp-container">
         <div className="row">
           <ChatroomsContainer />
           <MessagesContainer messages={this.state.messages} addNewMessage={this.addNewMessage} renderMessage={this.renderMessage}/>
