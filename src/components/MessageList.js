@@ -4,8 +4,15 @@ import { Comment } from 'semantic-ui-react'
 
 export default class MessageList extends Component {
 
+	sortMessages = () => {
+		return this.props.messages.sort((msgA, msgB) => {
+			return msgA.id - msgB.id
+		})
+	}
+
 	renderMes = () => {
-		return this.props.messages.map( (message, idx) => {
+		const sorted = this.sortMessages();
+		return sorted.map( (message, idx) => {
 			return <Message key={idx} message={message}/>
 		})
 	};
