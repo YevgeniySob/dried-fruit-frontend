@@ -34,10 +34,11 @@ class MessagesContainer extends Component {
 	};
 
   render() {
+    	console.log('chatroom ID: ', this.props.chatRoomId)
     return (
       <Fragment>
 	      <ActionCableConsumer
-		      channel={{channel: "ChatroomChannel"}}
+		      channel={{channel: "MessageChannel", chatroomId: this.props.chatRoomId}}
 		      onReceived={(message) => {
 			      console.log('message was received', message);
 			      this.props.renderMessage(message)

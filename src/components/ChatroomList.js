@@ -3,9 +3,9 @@ import React from 'react';
 const ChatroomList = (props) => {
 
   return (
-    <div>Mod 4</div>
+    <div onClick={() =>  props.changeChat(props.chat)}>{props.chat.name}</div>
   )
 
-}
+};
 
 export default ChatroomList;

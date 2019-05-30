@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import { Route, Switch }  from 'react-router-dom';
 import './App.css';
 
+import Particles from 'react-particles-js';
+
 import MainContainer   from './containers/MainContainer';
 import Navbar          from './components/Navbar';
 import SignupContainer from './auth/SignupContainer';
+
 
 class App extends Component {
 
@@ -57,11 +60,22 @@ class App extends Component {
           currentUser={this.state.currentUser}
           logOut={this.logOut}
         />
-        {/*<MainContainer />*/}
         <Switch>
           <Route path="/chatrooms" render={() => <MainContainer currentUser={this.state.currentUser} fetching={this.state.fetching}/>} />
           <Route path="/signup" component={SignupContainer}/>
-          <Route path="/" component={null} />
+          <Route path="/" render={() => <Particles
+            params={{
+              particles: {
+                shape: {
+                  type: 'images',
+                  images: [
+                    {src: 'path/to/first/image.svg', height: 20, width: 20},
+                    {src: 'path/to/second/image.jpg', height: 20, width: 20},
+                  ]
+                }
+              }
+            }}
+          />} />
         </Switch>
       </React.Fragment>
     )

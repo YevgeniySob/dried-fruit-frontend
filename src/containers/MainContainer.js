@@ -1,47 +1,75 @@
-import React, { Component } from 'react';
-import ChatroomsContainer   from './ChatroomsContainer';
-import MessagesContainer    from './MessagesContainer';
-import UsersContainer       from '../auth/UsersContainer';
-import { withRouter}        from 'react-router-dom'
+import React, {Component, Fragment} from 'react';
+import ChatroomsContainer           from './ChatroomsContainer';
+import MessagesContainer            from './MessagesContainer';
+import UsersContainer               from '../auth/UsersContainer';
+import { withRouter}                from 'react-router-dom'
 
 class MainContainer extends Component {
 
   state = {
     chatrooms: [],
-	  messages: [],
-	  users: [],
-	  currentChatRoom: null
+	  currentChatRoom: null,
+	  fetching: true
+  };
+
+  changeChat = chat => {
+  	this.setState({
+		  currentChatRoom: chat
+	  })
+  };
+
+  getInfo = (index) => {
+  	console.log("chat ID: ", index)
+	  if (!this.props.currentUser && !this.props.fetching) {
+		  this.props.history.push("/")
+	  } else {
+  		console.log("FETCHING: ", this.state)
+		  fetch('http://localhost:3000/chatrooms')
+			  .then(r => r.json())
+			  .then(data => this.setState({
+
+				  chatrooms: data,
+
+				  currentChatRoom: data[index],
+				  // messages: data[0].messages,
+				  // users: data[0].usersInChat,
+				  fetching: false
+			  }))
+	  }
   };
 
   componentDidMount() {
-    if (!this.props.currentUser && !this.props.fetching) {
-      this.props.history.push("/")
-    } else {
-      fetch('http://localhost:3000/chatrooms')
-      .then(r => r.json())
-      .then(data => this.setState({
-
-        chatrooms: data,
-        messages: data[0].messages,
-        users: data[0].usersInChat
-      }))
-    }
+  	if (!this.state.currentChatRoom) {
+		  this.getInfo(0)
+  		console.log("No Chat Room Yet: ", this.state)
+	  } else {
+  		console.log("Chatroom ID in CDM: ", this.state.currentChatRoom.id)
+  		this.getInfo(this.state.currentChatRoom.id - 1)
+  	}
   }
 
 	renderMessage = message => {
-    console.log("render message is running");
-		this.setState(prevState => {
-			return {
-				messages: [...prevState.messages, message]
-			};
-		});
+    console.log("render message is running", message);
+    // if(message.chatroom_id === this.state.currentChatRoom.id) {
+	    this.setState(prevState => {
+		    return {
+			    ...prevState,
+			    currentChatRoom: {
+				    ...prevState.currentChatRoom,
+				    messages: [...prevState.currentChatRoom.messages, message]
+			    }
+		    };
+	    });
+    // } else {
+    // 	console.log("WRONG CHANNEL")
+    // }
 	};
 
   addNewMessage = (newMessage) => {
   	let formData = {
   		content: newMessage,
 		  user_id: this.props.currentUser.id,
-		  chatroom_id: 1
+		  chatroom_id: this.state.currentChatRoom.id
 	  };
 
 	  let configObj = {
@@ -64,9 +92,14 @@ class MainContainer extends Component {
     return (
       <div id={'main-container'} className="ui internally celled grid comp-container">
         <div className="row">
-          <ChatroomsContainer />
-          <MessagesContainer messages={this.state.messages} addNewMessage={this.addNewMessage} renderMessage={this.renderMessage}/>
-          <UsersContainer users={this.state.users}/>
+	        {( !this.state.fetching && this.state.currentChatRoom) &&
+	        <Fragment>
+		        {console.log('what is this?', this.state.currentChatRoom)}
+	          <ChatroomsContainer chatRooms={this.state.chatrooms} changeChat={this.changeChat} chat={this.state.currentChatRoom}/>
+	          <MessagesContainer chatRoomId={this.state.currentChatRoom.id} messages={this.state.currentChatRoom.messages} addNewMessage={this.addNewMessage} renderMessage={this.renderMessage}/>
+	          <UsersContainer users={this.state.currentChatRoom.usersInChat}/>
+	        </Fragment>
+	        }
         </div>
       </div>
     )

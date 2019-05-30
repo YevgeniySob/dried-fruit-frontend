@@ -9,7 +9,6 @@ class Navbar extends Component {
 	};
 
 	render() {
-		console.log("Navbar currentUser: ", this.props.currentUser)
 		return (
 			<div className="ui top fixed borderless inverted fluid menu">
 				<div className="ui container">
